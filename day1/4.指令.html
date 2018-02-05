@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<!--v-xxx   : @-->
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app="ngapp">
+		<!--V-->
+		<div>
+			<div ng-controller="indexCtrl">
+				<p style="color: red;">1.ng-bind</p>
+				<p ng-bind="name" v-text v-bind></p>
+				<p style="color: red;" ng-init="skill='ps'">2.ng-init</p>
+				<p>{{skill}}</p>
+				<p style="color: red;">3.ng-model</p>
+				<input v-model ng-model="name" />
+				<textarea ng-model="name"></textarea>
+				<select ng-model="name">
+					<option value="a">a</option>
+					<option value="b">b</option>
+					<option value="c">c</option>
+				</select>
+				<p>{{name}}</p>
+			</div>
+		</div>
+		<script src="../js/angular.js"></script>
+		<script>
+			//jquery requirejs
+			//定义第一个主模块 命名主模块赋对象给app
+			var app = angular.module("ngapp",[]);
+			console.log(app)
+			//C el angular控制的范围 作用域
+			app.controller("indexCtrl",function($scope){
+				//M
+				$scope.name = "hello world"
+			})
+		</script>
+	</body>
+</html>

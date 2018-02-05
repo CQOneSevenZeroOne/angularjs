@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--View-->
+		<div id="demo">
+			<xheader />
+			<xheader />
+			<xheader />
+			<xcontainer />
+		</div>
+		<p>123</p>
+		<script>
+			Vue.component("xheader",{
+				//html
+				template:`
+					<div class="header" ng-controller="header">
+						<p>{{name}}</p>
+					</div>
+				`
+				//js
+				//css
+			})
+			Vue.component("xcontainer",{})
+			new Vue({
+				//controller
+				el:"#demo",
+				//model
+				data:{}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body ng-app="ngapp">
+		<!--V-->
+		<div>
+			<div ng-controller="indexCtrl">
+				<p style="color: red;">1.字符串</p>
+				<p>{{name}}</p>
+				<p style="color: red;">2.数组</p>
+				<p>{{arr}}</p>
+				<p>结果为：{{arr[0]+arr[1]}}</p>
+				<p style="color: red;">3.对象</p>
+				<p>{{obj}}</p>
+				<p>姓名为：{{obj.name}} 技能为：{{obj.skill}}</p>
+				<p style="color: red;">4.布尔值</p>
+				<p>{{bool}}</p>
+				<p>{{!bool?"真":"假"}}</p>
+				<p style="color: red;">5.数字</p>
+				<p>{{num+1/5}}</p>
+				<p style="color: red;">6.属性值</p>
+				<p id="{{name}}">{{name}}</p>
+				<style>.blue{color: {{color}};}</style>
+				<p class="blue">{{name}}</p>
+				<p style="color: red;">7.函数</p>
+				<p>{{makestr(name)}}</p>
+			</div>
+		</div>
+		<script src="../js/angular.js"></script>
+		<script>
+			var app = angular.module("ngapp", []);
+			console.log(app)
+			app.controller("indexCtrl", function($scope) {
+				$scope.name = "hello world";
+				$scope.arr = ["a", "b", "c"];
+				$scope.obj = {
+					name: "ly",
+					skill: "ps"
+				}
+				$scope.bool = true
+				$scope.num = 5
+				$scope.color = "blue"
+				$scope.makestr = function(str){
+					return str + "ed"
+				}
+			})
+		</script>
+	</body>
+
+</html>

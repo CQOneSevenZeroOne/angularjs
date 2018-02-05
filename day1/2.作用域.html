@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body ng-app="ngapp">
+		<style>
+			.header {
+				border: 1px solid red;
+				padding: 20px;
+			}
+			
+			.container {
+				border: 1px solid green;
+				padding: 20px;
+			}
+			
+			.footer {
+				border: 1px solid blue;
+				padding: 20px;
+			}
+		</style>
+		<!--V-->
+		<div>
+			<div class="header" ng-controller="header">
+				<p>{{name}}</p>
+			</div>
+			<div class="container" ng-controller="container">
+				<p>{{name}}</p>
+			</div>
+			<div class="footer" ng-controller="footer">
+				<p>{{name}}</p>
+			</div>
+		</div>
+		<script src="../js/angular.js"></script>
+		<script>
+			//jquery requirejs
+			//定义第一个主模块 命名主模块赋对象给app
+			var app = angular.module("ngapp", []);
+			console.log(app)
+			//C el angular控制的范围 作用域
+			app.controller("header", function($scope) {
+				//M
+				$scope.name = "header"
+			})
+			app.controller("container", function($scope) {
+				//M
+				$scope.name = "container"
+			})
+			app.controller("footer", function($scope) {
+				//M
+				$scope.name = "footer"
+			})
+		</script>
+	</body>
+
+</html>
