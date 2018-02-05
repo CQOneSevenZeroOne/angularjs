@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app="ngapp">
+		<div>
+			<div style="border: 1px solid red; padding: 10px;" ng-controller="father">
+				<p>{{name}}</p>
+				<div style="border: 1px solid blue; padding: 10px;" ng-controller="child">
+					<p>{{name}}</p>
+				</div>
+			</div>
+		</div>
+		<script src="../js/angular.js"></script>
+		<script>
+			//jquery requirejs
+			//定义第一个主模块 命名主模块赋对象给app
+			var app = angular.module("ngapp",[]);
+			console.log(app)
+			//C el angular控制的范围 作用域
+			app.controller("father",function($scope){
+				//M
+				$scope.name = "father"
+			})
+			app.controller("child",function($scope){
+				props
+				vuex
+				$on $emit
+				//M
+				//$scope.name = "child"
+			})
+		</script>
+	</body>
+</html>

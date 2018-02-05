@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app="ngapp">
+		<!--V-->
+		<div>
+			<div ng-controller="indexCtrl">
+				<p>{{name}}</p>
+				<ul>
+					<li ng-repeat="j in json.data">
+						<p>{{j.title}}</p>
+						<img ng-repeat="i in j.image_list" ng-src="{{i.url}}" />
+					</li>
+				</ul>
+			</div>
+		</div>
+		<script src="../js/angular.js"></script>
+		<script src="./news.js"></script>
+		<script>
+			//jquery requirejs
+			//定义第一个主模块 命名主模块赋对象给app
+			var app = angular.module("ngapp",[]);
+			console.log(app)
+			//C el angular控制的范围 作用域
+			app.controller("indexCtrl",function($scope){
+				//M
+				$scope.name = "新闻"
+				$scope.json = json
+			})
+		</script>
+	</body>
+</html>

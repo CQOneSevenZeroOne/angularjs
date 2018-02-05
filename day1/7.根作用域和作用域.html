@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="ngapp">
+	<head>
+		<meta charset="UTF-8">
+		<title>{{skill}}</title>
+	</head>
+	<body>
+		<!--全局作用域-->
+		<div>
+			<div style="border: 1px solid red; padding: 10px;" ng-controller="indexCtrl">
+				<!--局部作用域-->
+				<p>{{name}}</p>
+				<p>{{skill}}</p>
+			</div>
+			<p>111{{name}}</p>
+			<p>{{skill}}</p>
+			<div style="border: 1px solid blue; padding: 10px;" ng-controller="homeCtrl">
+				<!--局部作用域-->
+				<p>{{name}}</p>
+				<p>{{skill}}</p>
+			</div>
+		</div>
+		<script src="../js/angular.js"></script>
+		<script>
+			var app = angular.module("ngapp",[]);
+			console.log(app)
+			app.controller("indexCtrl",function($scope,$rootScope){
+				$scope.name = "index"
+				$rootScope.skill = "ps"
+			})
+			app.controller("homeCtrl",function($scope,$rootScope){
+				$scope.name = "home"
+				$scope.skill = "sq"
+			})
+		</script>
+	</body>
+</html>

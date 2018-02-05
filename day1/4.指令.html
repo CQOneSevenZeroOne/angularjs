@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html>
 	<!--v-xxx   : @-->
+
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
 	</head>
+
 	<body ng-app="ngapp">
+		<style>
+			.bg {
+				background-color: yellow;
+			}
+		</style>
 		<!--V-->
 		<div>
 			<div ng-controller="indexCtrl">
-				<p style="color: red;">1.ng-bind</p>
+				<p style="color: red;">1.ng-bind v-text</p>
 				<p ng-bind="name" v-text v-bind></p>
 				<p style="color: red;" ng-init="skill='ps'">2.ng-init</p>
 				<p>{{skill}}</p>
-				<p style="color: red;">3.ng-model</p>
+				<p style="color: red;">3.ng-model v-model</p>
 				<input v-model ng-model="name" />
 				<textarea ng-model="name"></textarea>
 				<select ng-model="name">
@@ -22,19 +29,72 @@
 					<option value="c">c</option>
 				</select>
 				<p>{{name}}</p>
+				<p style="color: red;">4.ng-bind-html v-html</p>
+				<div ng-bind-html="html"></div>
+
+				<p style="color: red;">5.ng-class :class</p>
+				<p ng-class="{'bg':bool}">{{name}}</p>
+
+				<p style="color: red;">6.ng-click @click</p>
+
+				<button ng-disabled="true" :disable ng-click="toggle()">切换颜色</button>
+				<button ng-disabled="false" :disable ng-click="toggle()">切换颜色</button>
+
+				<p style="color: red;">7.ng-show v-show</p>
+				<p ng-show="bool">{{name}}</p>
+
+				<p style="color: red;">8.ng-if v-if</p>
+				<p ng-if="bool">{{name}}</p>
+
+				<p style="color: red;">9.ng-hide v-else</p>
+				<p ng-hide="bool">{{name}}</p>
+
+				<p style="color: red;">10.ng-repeat v-for</p>
+				<p ng-repeat="a in arr">姓名为：{{a.name}} 技能为：{{a.skill}}</p>
+				<table>
+					<tr></tr>
+				</table>
+				<select>
+					<option></option>
+				</select>
+				<ul>
+					<li></li>
+				</ul>
+				
+				<p style="color: red;">11.ng-style :style</p>
+				<p ng-style="{'backgroundColor':'blue','fontSize':num+'px'}">{{name}}</p>
+				<input type="range" ng-model="num" />
 			</div>
 		</div>
 		<script src="../js/angular.js"></script>
 		<script>
 			//jquery requirejs
 			//定义第一个主模块 命名主模块赋对象给app
-			var app = angular.module("ngapp",[]);
+			var app = angular.module("ngapp", []);
 			console.log(app)
 			//C el angular控制的范围 作用域
-			app.controller("indexCtrl",function($scope){
+			app.controller("indexCtrl", function($scope, $sce) {
 				//M
 				$scope.name = "hello world"
+				console.log($sce)
+				$scope.bool = true
+				$scope.num = 20;
+				$scope.html = $sce.trustAsHtml(`<p>123<span style="color:blue">456</span></p>`)
+				$scope.toggle = function() {
+					$scope.bool = !$scope.bool
+				}
+				$scope.arr = [{
+					name: "ly",
+					skill: "js"
+				}, {
+					name: "ll",
+					skill: "css"
+				}, {
+					name: "lz",
+					skill: "ps"
+				}]
 			})
 		</script>
 	</body>
+
 </html>
