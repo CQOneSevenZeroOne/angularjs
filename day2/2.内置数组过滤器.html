@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body ng-app="ngapp">
+		<div>
+			<div ng-controller="indexCtrl">
+				<p style="color: red;">1.filter 筛选</p>
+				<input ng-model="search" />
+				<table>
+					<thead>
+						<tr>
+							<th>姓名</th>
+							<th>年龄</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="a in arr|filter:search">
+							<th>{{a.name}}</th>
+							<th>{{a.age}}</th>
+						</tr>
+					</tbody>
+				</table>
+				
+				<p style="color: red;">2.limitTo 分页</p>
+				<!--截取的长度   从哪个下标开始截取-->
+				<p>{{str|limitTo:2:-2}}</p>
+				<!--不能显示超过5个字-->
+				<p>{{str|limitTo:5:0}}...</p>
+				
+				<table>
+					<thead>
+						<tr>
+							<th>姓名</th>
+							<th>年龄</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="a in arr|limitTo:2:offset">
+							<th>{{a.name}}</th>
+							<th>{{a.age}}</th>
+						</tr>
+					</tbody>
+				</table>
+				<button ng-click="next()">下一页</button>
+				<button ng-click="pre()">上一页</button>
+				
+				<p style="color: red;">3.orderBy 排序</p>
+				<input ng-model="search" />
+				<button ng-click="bool=!bool">排序</button>
+				<table>
+					<thead>
+						<tr>
+							<th>姓名</th>
+							<th>年龄</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="a in arr|filter:search|orderBy:'name':bool">
+							<th>{{a.name}}</th>
+							<th>{{a.age}}</th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<script src="../js/angular.js"></script>
+		<script>
+			var app = angular.module("ngapp", []);
+			console.log(app)
+			app.controller("indexCtrl", function($scope) {
+				$scope.bool = false
+				$scope.search = ""
+				$scope.arr = [{
+					name: 'lyy',
+					age: 17
+				}, {
+					name: 'Ll',
+					age: 8
+				}, {
+					name: 'ag',
+					age: 20
+				}, {
+					name: 'lyx',
+					age: 17
+				}, {
+					name: 'cp',
+					age: 1
+				}, {
+					name: 'ly',
+					age: 3
+				}, {
+					name: 'Ly',
+					age: 4
+				}]
+				$scope.str = "abcdefghij"
+				$scope.offset = 0
+				$scope.next = function(){
+					$scope.offset+=2
+				}
+				$scope.pre = function(){
+					$scope.offset-=2
+				}
+			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app="ngapp">
+		<!--V-->
+		<div>
+			<div ng-controller="indexCtrl">
+				<p style="color: red;">1.currency</p>
+				<p>{{num|currency:"￥":4}}</p>
+				<p>{{currency(num)}}</p>
+				
+				<p style="color: red;">2.lowercase&&uppercase</p>
+				<p>{{str|lowercase}}</p>
+				<p>{{str|uppercase}}</p>
+				
+				<p style="color: red;">3.date</p>
+				<p>{{time|date:'yyyy-MM-dd hh:mm:ss EEEE LLLL'}}</p>
+			
+				<p style="color: red;">4.json</p>
+				<p>{{obj}}</p>
+				<p>{{obj|json:4}}</p>
+				
+				<p style="color: red;">5.number</p>
+				<p>{{num|number:8}}</p>
+			</div>
+		</div>
+		<!--computed-->
+		<script src="../js/angular.js"></script>
+		<script>
+			var app = angular.module("ngapp",[]);
+			app.controller("indexCtrl",function($scope){
+				//M
+				$scope.num = 12345678
+				$scope.currency = function(num){
+					return '$'+num+".00"
+				}
+				$scope.str = "aBCdEFGhiJk"
+				$scope.time = (new Date()).getTime();
+				$scope.obj = {
+					name:"ly",
+					skill:"ps"
+				}
+			})
+		</script>
+	</body>
+</html>

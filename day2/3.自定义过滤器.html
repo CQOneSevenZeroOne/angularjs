@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app="ngapp">
+		<!--V-->
+		<div>
+			<div ng-controller="indexCtrl">
+				<p>{{name|ed}}</p>
+			</div>
+		</div>
+		<script src="../js/angular.js"></script>
+		<script>
+			var app = angular.module("ngapp",[]);
+			app.controller("indexCtrl",function($scope){
+				$scope.name = "hello world"
+			})
+			app.filter("ed",function(){
+				//值进来
+				return function(value){
+					
+					
+					//值出去
+					return value.length
+				}
+			})
+		</script>
+	</body>
+</html>

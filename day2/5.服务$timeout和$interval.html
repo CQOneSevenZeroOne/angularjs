@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body ng-app="ngapp">
+		<!--V-->
+		<div>
+			<div ng-controller="indexCtrl">
+				<input ng-model="name" />
+				<p>{{name}}</p>
+			</div>
+		</div>
+		<script src="../js/angular.js"></script>
+		<script>
+			//数据劫持
+			//脏值检测
+			var app = angular.module("ngapp", []);
+			app.controller("indexCtrl", function($scope, $timeout, $interval) {
+				$scope.name = "hello world"
+				/*$timeout(function() {
+					$scope.name = "abcd"
+				}, 1000)*/
+				console.log($scope.name)
+				/*window.setTimeout(function() {
+					$scope.name = "abcd"
+					console.log($scope.name)
+					//通知数据变化，然后视图才变化
+					$scope.$apply();
+				}, 1000)*/
+				/*window.setTimeout(function() {
+					document.querySelector("p").innerHTML = "1"
+					//通知数据变化，然后视图才变化
+					//$scope.$apply();
+				}, 1000)*/
+				//$http
+				/*$.ajax({
+					success() {
+						$scope.name = "abcd"
+					}
+				})*/
+			})
+		</script>
+	</body>
+
+</html>
