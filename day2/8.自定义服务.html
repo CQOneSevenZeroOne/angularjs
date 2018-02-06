@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body ng-app="ngapp">
+		<div>
+			<div style="border: 1px solid red; padding: 10px;" ng-controller="indexCtrl">
+				<input ng-model="name" />
+				<p>{{name}}</p>
+			</div>
+			<div style="border: 1px solid blue; padding: 10px;" ng-controller="homeCtrl">
+				<p>{{tool.state}}</p>
+			</div>
+
+		</div>
+		<script src="../js/angular.js"></script>
+		<script>
+			var app = angular.module("ngapp", []);
+			app.controller("indexCtrl", function($scope, tool, cookie, baidu, pi) {
+				$scope.name = "index"
+				$scope.$watch('name', function() {
+					console.log($scope.name)
+					tool.state = $scope.name
+				})
+				tool.state = 9
+				console.log(tool, cookie, baidu, pi)
+				console.log(tool.add(1, 2))
+			})
+			app.controller("homeCtrl", function($scope, tool) {
+				$scope.tool = tool
+				console.log(tool)
+				console.log(tool.add(3, 5))
+			})
+			//构造式
+			app.service("tool", function($http, $window, baidu,pi) {
+				this.add = function(a, b) {
+					return a + b
+				}
+				this.state = 2
+				this.baidu = baidu
+				this.pi = pi
+			})
+			//工厂式
+			app.factory("cookie", function() {
+				return {
+					setCookie: function() {}
+				}
+			})
+			app.value("baidu", "http://www.baidu.com")
+			app.constant("pi", 3.14)
+			//自定义过滤器
+			//app.filter("",function(){})
+			console.log(app)
+		</script>
+	</body>
+
+</html>

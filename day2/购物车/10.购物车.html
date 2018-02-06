@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<ul>
+			<li data-good="0">
+				<p>短袖衬衣</p>
+				<p>98.88</p>
+				<button>添加购物车1</button>
+			</li>
+			<li data-good="1">
+				<p>短袖衬衣2</p>
+				<p>88.88</p>
+				<button>添加购物车2</button>
+			</li>
+			<li data-good="2">
+				<p>短袖衬衣3</p>
+				<p>9.888</p>
+				<button>添加购物车3</button>
+			</li>
+			<li data-good="3">
+				<p>短袖衬衣4</p>
+				<p>8.88</p>
+				<button>添加购物车4</button>
+			</li>
+		</ul>
+		<a href="11.结算.html">结算</a>
+		<script>
+			var ul = document.querySelector("ul");
+			var cardlist = [];
+			var arr = document.cookie.split("; ");
+			//console.log(arr)
+			for(var i = 0; i < arr.length; i++) {
+				var arr2 = arr[i].split("=")
+				//console.log(arr2)
+				if(arr2[0] == "cardlist") {
+					console.log(JSON.parse(arr2[1]))
+					cardlist = JSON.parse(arr2[1]);
+				}
+			}
+			ul.addEventListener("click", function(e) {
+				console.log(e.target.nodeName.toLowerCase())
+				if(e.target.nodeName.toLowerCase() === "button") {
+					var li = e.target.parentNode;
+					//商品序列号
+					var liId = li.getAttribute("data-good")
+
+					//商品序列号
+					console.log(liId);
+					//商品名字
+					console.log(li.firstElementChild.innerHTML)
+					//商品的价格
+					console.log(li.childNodes[3].innerHTML)
+
+					for(var i = 0; i < cardlist.length; i++) {
+						if(cardlist[i].gid === liId) {
+							cardlist[i].num++
+								//如果触发break，那就是找到，那就是商品已经存在了
+								//此时i是一定小于cardlist.length
+
+								//如果不处罚break，那就是一个都找不到，那就是商品不存在
+								//此时i一定是等于cardlist.length
+								break;
+						}
+					}
+					console.log(i, cardlist.length)
+					if(i === cardlist.length) {
+						var obj = {};
+						obj.gid = liId;
+						obj.name = li.firstElementChild.innerHTML;
+						obj.price = li.childNodes[3].innerHTML;
+						obj.num = 1;
+						cardlist.push(obj)
+					}
+					console.log(cardlist)
+
+					//存cardlist数组到cookie里面
+					document.cookie = "cardlist = " + JSON.stringify(cardlist);
+				}
+			})
+		</script>
+	</body>
+
+</html>

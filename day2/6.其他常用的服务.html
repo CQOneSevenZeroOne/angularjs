@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body ng-app="ngapp">
+		<div>
+			<div ng-controller="indexCtrl">
+				<select ng-model="id">
+					<option ng-repeat="a in arr" value="{{a.id}}">{{a.good}}</option>
+				</select>
+				<a href="{{'详情页.html#!/?id='+id}}">购买</a>
+			</div>
+		</div>
+		<script src="../js/angular.js"></script>
+		<script>
+			var app = angular.module("ngapp", []);
+			app.controller("indexCtrl", function($scope, $location) {
+				$scope.id = "2"
+				$scope.arr = [{
+					good: "mobile",
+					id: 1
+				}, {
+					good: "computer",
+					id: 2
+				}, {
+					good: "clothes",
+					id: 3
+				}]
+				//console.log($location)
+				// #!/index?name=1
+				//console.log($location.search())
+			})
+		</script>
+	</body>
+
+</html>
