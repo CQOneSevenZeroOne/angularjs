@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--V-->
+		<div id="demo"></div>
+		<script src="../js/react.js"></script>
+		<script src="../js/react-dom.js"></script>
+		<script src="../js/babel.js"></script>
+		<script type="text/babel">
+			//M
+			var data = {
+				name:"wsewwqe",
+				ing:function(val){
+					return val + "ing"
+				}
+			}
+			
+			ReactDOM.render(
+				<div>{data.ing(data.name)}</div>,
+				document.getElementById("demo")
+			)
+		</script>
+	</body>
+</html>

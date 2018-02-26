@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<!--V-->
+		<div id="demo">456</div>
+		<script>
+			//M
+			var obj = {
+				name: "7979"
+			}
+			Object.defineProperty(obj, "name", {
+				set: function(newValue) {
+					console.log('newValue:' + newValue);
+					//设置新值
+					//val = newValue;
+					document.getElementById("demo").innerHTML = newValue
+				},
+				get: function() {
+					console.log("getValue:" + val);
+					//返回val设置对应属性值
+					return val;
+				}
+			})
+			//document.getElementById("demo").innerHTML = obj.name
+			setInterval(function() {
+				obj.name = Math.random()
+			}, 1000)
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<div id="demo">
+			<!--V-->
+		</div>
+		<script src="../js/vue.js"></script>
+		<script>
+			Vue.component("asd",{
+				template:`
+					<div>第一个组件</div>
+				`
+			});
+			Vue.filter();
+			Vue.directive("color", {
+				bind(el, binding) {
+					console.log(el)
+					el.style.color="red"
+				}
+			});
+			new Vue({
+				//C
+				el: "#demo",
+				template: `
+					<div>
+						<input v-color v-model="name" />
+						<p v-color>{{name}}</p>
+						<xheader />
+						<xheader />
+						<xheader />
+						<xheader />
+					</div>
+				`,
+				//M
+				data: {
+					name: "3"
+				},
+				/*3-0.001s->2-0.001s->2-0.001s->3
+				===
+				3->3*/
+				watch: {
+					name: function() {
+						console.log(this.name)
+					}
+				},
+
+			})
+			//input,select,textarea
+
+			/*var html1 =
+				var html2 =
+					var html3 =
+						created - > mounted - > update - > destory
+			Object.defineProperties(obj, {
+
+			})*/
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="ngApp">
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div ng-controller="indexCtrl">
+			<!--V-->
+			<input ng-model="name" />
+			<p>{{name}}</p>
+			<p>{{100|currency}}</p>
+			<p ng-bind="name" v-text="name"></p>
+		</div>
+		<script src="../js/angular.js"></script>
+		<script>
+			var app = angular.module("ngApp",[]);
+			//C
+			app.controller("indexCtrl",function($scope,$interval,$window){
+				//M
+				$scope.name = "asdasdasd"
+				$scope.$watch("name",function(){
+					console.log($scope.name)
+				})
+				//$scope.$apply()
+				//setInterval
+				//window
+			})
+			//指令，服务  或者 $scope.$apply()
+		</script>
+	</body>
+</html>
