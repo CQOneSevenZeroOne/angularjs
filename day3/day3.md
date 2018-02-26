@@ -1,7 +1,7 @@
 # 三大框架对比
 |名称|Vue|Angular|React|jQuery|
 |-|-|-|-|-|
-|模块（容器）|`new Vue()`|`angular.module()`|`ReactDOM.render()`|
+|定义模块（容器）|`new Vue()`|`angular.module()`|`ReactDOM.render()`|
 |数据绑定|`{{name}}`双向数据绑定|`{{name}}`双向数据绑定|`{name}`单向数据绑定|
 |作用域|`el:"#demo"`配合id节点|`app.controller("indexCtrl",function($scope){})`配合`ng-controller`指令|`document.getElementById("demo")`配合id节点|
 |驱动模式|基于数据驱动|基于数据驱动|基于数据驱动|基于节点驱动|
@@ -13,3 +13,6 @@
 |自定义过滤器|对处理相同数据的方法封装`Vue.filter()`|`app.filter()`|无 可以用{data.ing(data.name)}模拟||
 |内置组件|理解为html自带的元素||||
 |自定义组件|组件就是对相同的js，html和css的封装 1.`Vue.component` 2.webpack打包`.vue`组件文件|`app.component()`|1. `React.createClass()` 2. webpack配合.jsx文件`class xxx extends React.Component{}`|
+|状态管理|Vuex(state action getter mumtation)组件之间通信 props和$emit,$on|redux或者服务service|redux (state, action)|
+|路由|实现单页面spa应用vue-router,局部刷新|ui-router和angular-router|react-router  webpack用react-router-dom|
+|模块化|webpack|自带模块化或者配合gulp|webpack|requirejs和gulp|

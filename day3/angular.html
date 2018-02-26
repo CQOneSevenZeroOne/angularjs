@@ -16,7 +16,7 @@
 		<script>
 			var app = angular.module("ngApp",[]);
 			//C
-			app.controller("indexCtrl",function($scope,$interval,$window){
+			app.controller("indexCtrl",function($scope,$interval,$window,state){
 				//M
 				$scope.name = "asdasdasd"
 				$scope.$watch("name",function(){
@@ -25,6 +25,13 @@
 				//$scope.$apply()
 				//setInterval
 				//window
+			})
+			app.service("state",function(){
+				return {
+					tool:function(){
+						
+					}
+				}
 			})
 			//指令，服务  或者 $scope.$apply()
 		</script>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script>
+			//时间会少，空间会多
+			function swap() {
+				var a = 7;
+				var b = 5;
+				var c;
+				c = a;
+				a = b;
+				b = c;
+			}
+
+			//时间会多，空间会少
+			function swap() {
+				var a = 7;
+				var b = 5;
+				a = a - b;
+				b = b + a;
+				a = b - a;
+			}
+			O(1)
+			
+			//时间多，空间少
+			function unique() {
+				//冒泡
+				var arr = [3, 'a', 'a', 1, 2 'a'];
+				for(){
+					for(){
+					
+					}
+				}
+			}
+			
+			//时间少，空间多
+			function unique() {
+				//冒泡
+				var arr = [3, 'a', 'a', 1, 2 'a'];
+				var result = {};
+				for(var i in arr){
+					if(result[i]){
+						result[i] = true
+					}
+				}
+			}
+			
+			//空间换时间
+			var el = document.querySelector("#demo");
+			document.querySelector("#demo").innerHTML = "1";
+			el.innerHTML = "2";
+			el.innerHTML = "3"
+			
+			
+			/*for(n){
+			}
+			O(n^2)*/
+		</script>
+	</body>
+
+</html>
